@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>{% block title %}Ink and Ideas{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Header section -->
+  <header class="header_section innerpage_header">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <span>Ink and Ideas</span>
+        </a>
+        <div class="custom_menu-btn">
+          <button id="menuButton" title="button">
+            <span class="s-1"></span>
+            <span class="s-2"></span>
+            <span class="s-3"></span>
+          </button>
+          <div id="myNav" class="overlay">
+            <div class="overlay-content">
+              <a href="{% url 'home' %}">Home</a>
+              <a href="{% url 'about' %}">About</a>
+              <a href="{% url 'content_list' 'quote' %}">Quotes</a>
+              <a href="{% url 'content_list' 'calligraphy' %}">Calligraphy</a>
+              <a href="{% url 'content_list' 'poem' %}">Poems</a>
+              <a href="{% url 'content_list' 'essay' %}">Essays</a>
+              <a href="{% url 'content_list' 'blog' %}">Blogs</a>
+              <a href="{% url 'contact' %}">Contact</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Shop Section -->
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>Latest Works</h2>
+      </div>
+      <div class="row">
+        {% for item in products %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="#">
+              <div class="img-box">
+                <img src="{% static item.image %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Price
+                  <span>{{ item.price }}</span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="btn-box">
+        <a href="#">View All Products</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Shop Section -->
+
+  <!-- Info Section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row info_form_social_row">
+        <div class="col-md-8 col-lg-9">
+          <div class="info_form">
+            <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button type="button" title="b1">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <div class="social_box">
+            <a href="#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" title="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row info_main_row">
+        <div class="col-md-6 col-lg-3">
+          <div class="info_links">
+            <h4>Menu</h4>
+            <div class="info_links_menu">
+              <a href="{% url 'home' %}">Home</a>
+              <a href="{% url 'about' %}">About</a>
+              <a href="{% url 'shop' %}">Shop</a>
+              <a href="{% url 'blog' %}">Blog</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_insta">
+            <h4>Instagram</h4>
+            <div class="insta_box">
+              <div class="img-box">
+                <img src="{% static 'images/p1.png' %}" alt="">
+              </div>
+              <p>Long established fact that a reader</p>
+            </div>
+            <div class="insta_box">
+              <div class="img-box">
+                <img src="{% static 'images/p2.png' %}" alt="">
+              </div>
+              <p>Long established fact that a reader</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_detail">
+            <h4>About Us</h4>
+            <p>When looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h4>Contact Us</h4>
+          <div class="info_contact">
+            <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>Location</span></a>
+            <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> <span>Call +01 1234567890</span></a>
+            <a href="#"><i class="fa fa-envelope"></i> <span>demo@gmail.com</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Info Section -->
+
+  <!-- Footer Section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </footer>
+  <!-- End Footer Section -->
+
+  <!-- Scripts -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+  <!-- Display Year Script -->
+  <script>
+    document.getElementById("displayYear").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

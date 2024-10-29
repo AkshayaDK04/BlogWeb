@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Ink and Ideas</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header_section innerpage_header">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <span>Ink and Ideas</span>
+        </a>
+        <div class="" id="">
+          <div class="custom_menu-btn">
+            <button onclick="openNav()" title="button">
+              <span class="s-1"> </span>
+              <span class="s-2"> </span>
+              <span class="s-3"> </span>
+            </button>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'content_list' 'quote' %}">Quotes</a>
+                <a href="{% url 'content_list' 'calligraphy' %}">Calligraphy</a>
+                <a href="{% url 'content_list' 'poem' %}">Poems</a>
+                <a href="{% url 'content_list' 'essay' %}">Essays</a>
+                <a href="{% url 'content_list' 'blog' %}">Blogs</a>
+                <a href="{% url 'contact' %}">Contact</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row info_form_social_row">
+        <div class="col-md-8 col-lg-9">
+          <div class="info_form">
+            <form action="{% url 'subscribe' %}">
+              <input type="email" placeholder="Subscribe for Updates" name="email">
+              <button type="submit" title="Subscribe">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <div class="social_box">
+            <a href="https://facebook.com" target="_blank" title="facebook" rel="noopener">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" title="twitter" rel="noopener">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" title="linkedin" rel="noopener">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row info_main_row">
+        <div class="col-md-6 col-lg-3">
+          <div class="info_links">
+            <h4>Quick Links</h4>
+            <div class="info_links_menu">
+              <a href="{% url 'home' %}">Home</a>
+              <a href="{% url 'about' %}">About Us</a>
+              <a href="{% url 'content_list' 'blogs' %}">Blog</a>
+              <a href="{% url 'contact' %}">Contact</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_insta">
+            <h4>Recent Works</h4>
+            <div class="insta_box">
+              <div class="img-box">
+                <img src="{% static 'images/p_1.png' %}" alt="Recent Work 1">
+              </div>
+              <p>Inspiring Quotes</p>
+            </div>
+            <div class="insta_box">
+              <div class="img-box">
+                <img src="{% static 'images/img_1.jpg' %}" alt="Recent Work 2">
+              </div>
+              <p>Beautiful Calligraphy</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_detail">
+            <h4>About Our Blog</h4>
+            <p class="mb-0">
+              Explore our collection of quotes, poetry, and calligraphy that inspire creativity and reflection. Join us on this literary journey.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h4>Get in Touch</h4>
+          <div class="info_contact">
+            <a href="#">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>Our Location</span>
+            </a>
+            <a href="tel:+011234567890">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>Call +01 1234567890</span>
+            </a>
+            <a href="mailto:info@inkandideas.com">
+              <i class="fa fa-envelope"></i>
+              <span>info@inkandideas.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>

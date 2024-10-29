@@ -1,0 +1,246 @@
+<!-- blog_list.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Healet</title>
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/gif" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header_section innerpage_header">
+      <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand" href="{% url 'home'  %}">
+                  <span>Healet</span>
+              </a>
+              <div class="" id="">
+                  <div class="custom_menu-btn">
+                      <button onclick="openNav()" type="button" title="b5">
+                          <span class="s-1"></span>
+                          <span class="s-2"></span>
+                          <span class="s-3"></span>
+                      </button>
+                      <div id="myNav" class="overlay">
+                          <div class="overlay-content">
+                              <a href="{% url 'home'  %}">Home</a>
+                              <a href="{% url 'about'  %}">About</a>
+                              <a href="{% url 'content_list' 'quote' %}">Quotes</a>
+                              <a href="{% url 'content_list' 'calligraphy' %}">Calligraphy</a>
+                              <a href="{% url 'content_list' 'poem' %}">Poems</a>
+                              <a href="{% url 'content_list' 'essay' %}">Essays</a>
+                              <a href="{% url 'content_list' 'blog' %}">Blogs</a>
+                              <a href="{% url 'contact'  %}">Contact</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </nav>
+      </div>
+  </header>
+  <!-- End Header Section -->
+
+  <section class="blog_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Latest From Blog</h2>
+        </div>
+
+        <!-- Button to show the blog creation form -->
+        <button class="btn btn-primary" onclick="document.getElementById('createForm').style.display='block'">
+            Create New Blog
+        </button>
+
+        <!-- Blog Creation Form -->
+        <div id="createForm" style="display:none; margin-top: 20px;">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('createForm').style.display='none'">
+                    Cancel
+                </button>
+            </form>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            {% for content in contents %}
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="img-box">
+                          <img src="{% static '/' %}{{ content.image }}" alt="Good Dayy">
+
+                           
+                            <h4 class="blog_date">
+                                {{ content.date|date:"d" }} <br>
+                                {{ content.date|date:"F" }}
+                            </h4>
+                        </div>
+                        <div class="detail-box">
+                            <h5>{{ content.title }}</h5>
+                            <p>{{ content.description|truncatewords:20 }}</p>
+                            <p>By {{ content.author }}</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No blogs available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- End Blog Section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row info_form_social_row">
+        <div class="col-md-8 col-lg-9">
+          <div class="info_form">
+            <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button type="button" title="b4">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+
+          <div class="social_box">
+            <a href="" title="facebook">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="" title="twitter">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="" title="linkedin">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row info_main_row">
+        <div class="col-md-6 col-lg-3">
+          <div class="info_links">
+            <h4>
+              Menu
+            </h4>
+            <div class="info_links_menu">
+              <a href="{% static 'index' %}">Home</a>
+              <a href="{% static 'about' %}">About</a>
+              <a href="{% static 'shop' %}">Shop</a>
+              <a href="{% static 'blog' %}">Blog</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_insta">
+            <h4>
+              Instagram
+            </h4>
+            <div class="insta_box">
+              <div class="img-box">
+                <img src="{% static 'images/p1.png' %}" alt="">
+              </div>
+              <p>
+                long established fact that a reader
+              </p>
+            </div>
+            <div class="insta_box">
+              <div class="img-box">
+                <img src="{% static 'images/p2.png' %}" alt="">
+              </div>
+              <p>
+                long established fact that a reader
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_detail">
+            <h4>
+              About Us
+            </h4>
+            <p class="mb-0">
+              when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h4>
+            Contact Us
+          </h4>
+          <div class="info_contact">
+            <a href="">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                Location
+              </span>
+            </a>
+            <a href="">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                Call +01 1234567890
+              </span>
+            </a>
+            <a href="">
+              <i class="fa fa-envelope"></i>
+              <span>
+                demo@gmail.com
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+
+  <!-- jQery -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>
